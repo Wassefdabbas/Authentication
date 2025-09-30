@@ -4,7 +4,7 @@ import SignUpPage from "./pages/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import { Toaster } from "react-hot-toast";
-import { useAuth } from "./utils/Useauth";
+import { useAuth } from "./utils/useAuth";
 import HomePage from "./pages/HomePage";
 import { Loader } from "lucide-react";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";

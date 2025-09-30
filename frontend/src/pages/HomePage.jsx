@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { formatDate } from "../utils/date";
-import { useAuth } from "../utils/Useauth";
+import { useAuth } from "../utils/useAuth";
 import { Loader } from "lucide-react";
 
 const DashboardPage = () => {

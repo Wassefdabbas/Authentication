@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../utils/Useauth";
+import { useAuth } from "../utils/useAuth";
 import { useNavigate, useParams } from "react-router";
 import { Eye, EyeOff, Lock } from "lucide-react";
 import toast from "react-hot-toast";

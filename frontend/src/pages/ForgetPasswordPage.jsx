@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../utils/Useauth";
+import { useAuth } from "../utils/useAuth";
 import { ArrowLeft, Loader, Mail } from "lucide-react";
 import { Link } from "react-router";
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { User, Mail, Lock, Eye, EyeOff, Loader } from "lucide-react";
 import PasswordStrengthMeter from "../components/PasswordStrength";
 import { Link, useNavigate } from "react-router";
-import { useAuth } from "../utils/Useauth";
+import { useAuth } from "../utils/useAuth";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
