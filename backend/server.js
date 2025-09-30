@@ -13,8 +13,13 @@ const __dirname = path.resolve()
 
 process.env.NODE_ENV = process.env.NODE_ENV || "production";
 
-
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
+if (process.env.NODE_ENV === 'production') {
+    app.use(cors({
+        origin: process.env.CLIENT_URL,
+        credentials: true
+    })
+    )
+}
 app.use(express.json())
 app.use(cookieParser()) // allows us to parse imcoming cookies
 
