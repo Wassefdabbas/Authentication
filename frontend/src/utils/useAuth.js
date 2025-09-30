@@ -1,13 +1,13 @@
-import { create } from 'zustand'
-import axios from 'axios'
+import { create } from 'zustand';
+import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api'
+// Correctly reads the environment variable set by Vite
+const API_URL = import.meta.env.VITE_API_URL;
 
 const API = axios.create({
     baseURL: API_URL,
     withCredentials: true,
 });
-
 
 export const useAuth = create((set) => ({
     user: null,
@@ -18,29 +18,27 @@ export const useAuth = create((set) => ({
     message: '',
 
     signup: async (name, email, password) => {
-        set({ isLoading: true, error: null })
+        set({ isLoading: true, error: null });
         try {
-            const response = await API.post('/auth/signup', { name, email, password })
-
+            const response = await API.post('/auth/signup', { name, email, password });
             set({
                 user: response.data.user || response.data.userData,
                 isAuthenticated: true,
                 isLoading: false,
-            })
+            });
         } catch (error) {
             set({
                 error: error?.response?.data?.message || 'Error signing up',
                 isLoading: false,
-            })
-            throw error
+            });
+            throw error;
         }
     },
 
     verifyEmail: async (code) => {
         set({ isLoading: true, error: null })
-
         try {
-            const response = await axios.post(`${API_URL}/auth/verify-email`, { code })
+            const response = await API.post(`/auth/verify-email`, { code })
             set({ user: response.data.user, isAuthenticated: true, isLoading: false })
             return response.data
         } catch (error) {
@@ -49,13 +47,11 @@ export const useAuth = create((set) => ({
                 isLoading: false,
             })
             throw error
-
         }
     },
 
     checkAuth: async () => {
         set({ isCheckingAuth: true, error: null })
-
         try {
             const response = await API.get('/auth/check-auth')
             set({ user: response.data.user || response.data.userData, isAuthenticated: true, isCheckingAuth: false })
@@ -69,7 +65,6 @@ export const useAuth = create((set) => ({
         set({ isLoading: true, error: null })
         try {
             const response = await API.post('/auth/login', { email, password })
-
             set({
                 user: response.data.user || response.data.userData,
                 isAuthenticated: true,
@@ -99,7 +94,6 @@ export const useAuth = create((set) => ({
         set({ isLoading: true, error: null })
         try {
             const response = await API.post('/auth/forget-password', { email })
-
             set({
                 message: response.data.message,
                 isLoading: false,
@@ -126,4 +120,4 @@ export const useAuth = create((set) => ({
             throw error
         }
     }
-}))
+}));
