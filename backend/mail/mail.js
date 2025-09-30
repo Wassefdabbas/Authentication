@@ -5,9 +5,7 @@ import 'dotenv/config'
 import nodemailer from 'nodemailer'
 
 export const mailtrapClient = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,       // SSL port
-  secure: true,    // true for 465, false for 587
+  service: "gmail",
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS, // Must be an App Password from Google
