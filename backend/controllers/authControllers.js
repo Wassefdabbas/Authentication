@@ -1,4 +1,5 @@
 import crypto from 'crypto'
+import 'dotenv/config'
 
 import { User } from '../models/User.js'
 import { generateTokenAndSetCookie } from '../utils/generateTokenAndSetCookie.js'

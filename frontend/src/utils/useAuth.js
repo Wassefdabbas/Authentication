@@ -8,6 +8,7 @@ const API = axios.create({
     baseURL: API_URL,
     withCredentials: true,
 });
+
 export const useAuth = create((set) => ({
     user: null,
     isAuthenticated: false,
