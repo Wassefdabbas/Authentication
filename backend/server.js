@@ -14,8 +14,8 @@ const __dirname = path.resolve();
 // This is the single, correct CORS configuration
 app.use(cors({
     origin: process.env.CLIENT_URL,
-    credentials: true
-}));
+    credentials: true,
+  }));
 
 app.use(express.json());
 app.use(cookieParser()); // allows us to parse incoming cookies

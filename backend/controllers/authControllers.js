@@ -5,6 +5,8 @@ import { User } from '../models/User.js'
 import { generateTokenAndSetCookie } from '../utils/generateTokenAndSetCookie.js'
 import { sendPasswordResetEmail, sendResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from '../mail/emails.js'
 
+const clientUrl = process.env.CLIENT_URL;
+
 // SIGN_UP
 export const signup = async (req, res) => {
     try {
@@ -158,7 +160,7 @@ export const forgetPassword = async (req, res) => {
         await user.save()
 
         // send email
-        await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`)
+        await sendPasswordResetEmail(user.email, `${clientUrl}/reset-password/${resetToken}`)
 
         res.status(200).json({ success: true, message: 'Password reset link sent to your email' })
     } catch (error) {

@@ -1,9 +1,13 @@
 import { create } from 'zustand'
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || '/api';
+let API_URL;
 
-
+if(import.meta.env.NODE_ENV === 'production') {
+    API_URL = '/api';
+} else {
+    API_URL = 'http://localhost:5000/api';
+}
 
 const API = axios.create({
     baseURL: API_URL,
