@@ -1,16 +1,16 @@
 import 'dotenv/config'
+import e from 'express';
 
 // ____NEW____
 import nodemailer from 'nodemailer'
 
 export const mailtrapClient = nodemailer.createTransport({
   // service: "gmail",
-  host: 'sandbox.smtp.mailtrap.io',
-  port: 465,
-  secure: true,
+  host: 'live.smtp.mailtrap.io',
+  port: 587,
   auth: {
-    user: 'fd5f258f242263',
-    pass: '5999837b2744ce', // Must be an App Password from Google
+    user: 'api',
+    pass: process.env.MAILTRAP_TOKEN, // Must be an App Password from Google
   },
 });
 
