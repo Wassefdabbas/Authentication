@@ -1,11 +1,11 @@
 import { PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE, VERIFICATION_EMAIL_TEMPLATE, WELCOME_EMAIL_TEMPLATE } from "./emailTemplates.js"
-import { mailtrapClient, sender } from "./mail.js"
+import { transporter, sender } from "./mail.js"
 
 export const sendVerificationEmail = async (email, verificationToken) => {
     const recipient = [{ email }]
 
     try {
-        const response = await mailtrapClient.sendMail({
+        const response = await transporter.sendMail({
             from: `"${sender.name}" <${sender.email}>`,
             to: email,
             subject: 'Verify your email',
@@ -24,7 +24,7 @@ export const sendWelcomeEmail = async (email, name) => {
     const recipient = [{ email }]
 
     try {
-        const response = await mailtrapClient.sendMail({
+        const response = await transporter.sendMail({
             from: `"${sender.name}" <${sender.email}>`,
             to: email,
             html: WELCOME_EMAIL_TEMPLATE.replace("{name}", name),
@@ -41,7 +41,7 @@ export const sendWelcomeEmail = async (email, name) => {
 export const sendPasswordResetEmail = async (email, resetURL) => {
     const recipient = [{ email }]
     try {
-        const response = await mailtrapClient.sendMail({
+        const response = await transporter.sendMail({
             from: `"${sender.name}" <${sender.email}>`,
             to: email,
             subject: 'Reset Your Password',
@@ -59,7 +59,7 @@ export const sendPasswordResetEmail = async (email, resetURL) => {
 export const sendResetSuccessEmail = async (email) => {
     const recipient = [{ email }]
     try {
-        const response = await mailtrapClient.sendMail({
+        const response = await transporter.sendMail({
             from: `"${sender.name}" <${sender.email}>`,
             to: email,
             subject: 'Password Reset Successfylly',

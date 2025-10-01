@@ -1,20 +1,23 @@
 import 'dotenv/config'
-import e from 'express';
-
-// ____NEW____
 import nodemailer from 'nodemailer'
 
-export const mailtrapClient = nodemailer.createTransport({
-  // service: "gmail",
-  host: 'live.smtp.mailtrap.io',
-  port: 587,
+export const transporter = nodemailer.createTransport({
+  service: 'gmail',
   auth: {
-    user: 'api',
-    pass: process.env.MAILTRAP_TOKEN, // Must be an App Password from Google
+    user: 'dabwasef1441@gmail.com',      // e.g. your Gmail address
+    pass: 'uehebkeyqmlwbefr',      // MUST be a Google App Password
   },
 });
 
 export const sender = {
-  email: process.env.SMTP_USER,
+  email: 'dabwasef1441@gmail.com',
   name: "Auth App",
 };
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("❌ SMTP Connection Error:", error);
+  } else {
+    console.log("✅ Gmail SMTP is ready to send emails");
+  }
+});
