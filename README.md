@@ -5,13 +5,13 @@ MERN Secure Auth is a robust, full-stack user authentication system built with t
 ## Features ✨
 
 -   **Secure Registration & Login**: New user accounts are protected with server-side validation and password hashing via `bcrypt`.
--   **JWT-Based Session Management**: Implements a stateless authentication strategy using JSON Web Tokens (JWT) for secure and scalable session control.
+-   **JWT-Based Session Management**: Implements authentication strategy using JSON Web Tokens (JWT) for secure and scalable session control.
 -   **Automated Email Verification**: Ensures user validity by sending a unique, secure verification link to the user's email inbox using `nodemailer`.
 -   **Secure Password Reset Flow**: A complete, token-based system allows users to securely reset their password if forgotten.
 -   **Protected Routes**: Both backend API endpoints and frontend UI routes are protected, ensuring that only authenticated users can access sensitive data and pages.
--   **Instant Feedback**: Utilizes `react-hot-toast` for non-blocking notifications for all user actions (e.g., "Login Successful," "Please check your email").
+-   **Instant Feedback**: Utilizes `react-hot-toast` for non-blocking notifications for all user actions.
 
-A primary goal of this project was to build a secure, stateless authentication flow typical of modern web applications. I achieved this with a JWT-based strategy:
+A primary goal of this project was to build a secure authentication flow typical of modern web applications. I achieved this with a JWT-based strategy:
 
 1.  **Token Generation**: Upon successful login (after verifying credentials with `bcrypt.compare`), the Express server generates and signs a JSON Web Token (JWT) containing a user ID payload and an expiration date.
 2.  **Client-Side Storage**: This JWT is sent to the React client, where it is stored in `localStorage` (or an HttpOnly cookie for enhanced security).
@@ -35,4 +35,5 @@ A primary goal of this project was to build a secure, stateless authentication f
 -   **Bcrypt.js** for password hashing
 -   **Nodemailer** for sending transactional emails
 -   **Dotenv** for managing environment variables
+
 
