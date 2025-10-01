@@ -5,12 +5,12 @@ import nodemailer from 'nodemailer'
 
 export const mailtrapClient = nodemailer.createTransport({
   // service: "gmail",
-  host: 'smtp.gmail.com',
+  host: 'sandbox.smtp.mailtrap.io',
   port: 465,
   secure: true,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS, // Must be an App Password from Google
+    user: 'fd5f258f242263',
+    pass: '5999837b2744ce', // Must be an App Password from Google
   },
 });
 
