@@ -15,7 +15,7 @@ A primary goal of this project was to build a secure authentication flow typical
 
 1.  **Token Generation**: Upon successful login (after verifying credentials with `bcrypt.compare`), the Express server generates and signs a JSON Web Token (JWT) containing a user ID payload and an expiration date.
 2.  **Client-Side Storage**: This JWT is sent to the React client, where it is stored in `localStorage` (or an HttpOnly cookie for enhanced security).
-3.  **Authenticated API Requests**: For every subsequent request to a protected API endpoint, the client attaches the JWT to the `Authorization` header as a `Bearer` token.
+3.  **Authenticated API Requests**: To access private data, every request from the browser must include the user's secret token. A middleware on the server then checks this token to make sure it's valid before sending any data back.
 4.  **Backend Middleware Verification**: A custom Express middleware intercepts these requests. It validates the JWT's signature using a secret key, checks for expiration, and extracts the user ID from the payload. If the token is valid, the user is authorized to access the resource; otherwise, a `401 Unauthorized` error is returned.
 
 ## Tech Stack 🛠️
@@ -35,5 +35,6 @@ A primary goal of this project was to build a secure authentication flow typical
 -   **Bcrypt.js** for password hashing
 -   **Nodemailer** for sending transactional emails
 -   **Dotenv** for managing environment variables
+
 
 
