@@ -21,11 +21,11 @@ A primary goal of this project was to build a secure authentication flow typical
 ## Tech Stack 🛠️
 
 #### Frontend
--   **React** (with Create React App or Vite)
+-   **React** (with Vite)
 -   **React Router** for client-side routing
 -   **Axios** for API requests
 -   **React Hot Toast** for notifications
--   **[Your Styling Choice, e.g., Tailwind CSS, Material-UI]** for styling
+-   **Tailwind CSS** for styling
 
 #### Backend
 -   **Node.js**
@@ -35,6 +35,4 @@ A primary goal of this project was to build a secure authentication flow typical
 -   **Bcrypt.js** for password hashing
 -   **Nodemailer** for sending transactional emails
 -   **Dotenv** for managing environment variables
-
-
-
+  
