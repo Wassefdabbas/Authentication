@@ -12,10 +12,15 @@ const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
 // This is the single, correct CORS configuration
+const allowedOrigin = process.env.NODE_ENV === 'production'
+    ? process.env.CLIENT_URL   // deployed frontend
+    : 'http://localhost:5175'; // your local frontend dev
+
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: allowedOrigin,
     credentials: true,
-  }));
+}));
+console.log("CORS origin:", allowedOrigin);
 
 app.use(express.json());
 app.use(cookieParser()); // allows us to parse incoming cookies
